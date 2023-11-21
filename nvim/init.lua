@@ -59,6 +59,20 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 vim.opt.cursorline = true;
+vim.wo.relativenumber = true
+
+-- Define LSP signs
+vim.fn.sign_define("LspDiagnosticsSignError", { text = "", texthl = "LspDiagnosticsSignError" })
+vim.fn.sign_define("LspDiagnosticsSignWarning", { text = "", texthl = "LspDiagnosticsSignWarning" })
+vim.fn.sign_define("LspDiagnosticsSignInformation", { text = "", texthl = "LspDiagnosticsSignInformation" })
+vim.fn.sign_define("LspDiagnosticsSignHint", { text = "", texthl = "LspDiagnosticsSignHint" })
+
+
+-- Define LSP signs
+vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
@@ -158,10 +172,15 @@ require('lazy').setup({
     -- See `:help lualine.txt`
     opts = {
       options = {
-        icons_enabled = false,
+        icons_enabled = true,
         theme = 'onedark',
         component_separators = '|',
         section_separators = '',
+        -- Show relative path
+        path = 1,
+      },
+      sections = {
+        lualine_x = {},
       },
     },
   },
@@ -208,7 +227,6 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
-  
   {
     'barrett-ruth/live-server.nvim',
     build = 'yarn global add live-server',
@@ -224,16 +242,6 @@ require('lazy').setup({
     },
   }
 
-  -- Flutter LSP
---  {
- --   'akinsho/flutter-tools.nvim',
-  --  lazy = false,
-   -- dependencies = {
-    --    'nvim-lua/plenary.nvim',
-     --   'stevearc/dressing.nvim', -- optional for vim.ui.select
-   -- },
-    -- config = true,
-   -- }
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -248,9 +256,6 @@ require('lazy').setup({
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- { import = 'custom.plugins' },
 }, {})
-
--- Setup Flutter LSP
--- require("flutter-tools").setup {} -- use defaults
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -358,11 +363,9 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim' },
-  
+    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'dart' },
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
-  
     highlight = { enable = true },
     indent = { enable = true },
     incremental_selection = {
@@ -436,6 +439,10 @@ local on_attach = function(_, bufnr)
   --
   -- In this case, we create a function that lets us more easily define mappings specific
   -- for LSP related items. It sets the mode, buffer and description for us each time.
+  --
+
+
+
   local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
@@ -483,7 +490,7 @@ require('which-key').register({
   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
 })
 
-require('live-server').setup(opts)
+
 
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -533,6 +540,22 @@ mason_lspconfig.setup_handlers {
     }
   end
 }
+
+local lsp_config = require("lspconfig");
+
+lsp_config["dartls"].setup({
+  on_attach = on_attach,
+  settings = {
+    dart = {
+      analysisExcludedFolders = {
+        vim.fn.expand("$HOME/AppData/Local/Pub/Cache"),
+        vim.fn.expand("$HOME/.pub-cache"),
+        vim.fn.expand("opt/homebrew/"),
+        vim.fn.expand("$HOME/tools/flutter/"),
+      },
+    },
+  },
+})
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
