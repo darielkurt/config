@@ -251,8 +251,12 @@ require('lazy').setup({
     config = function()
       require("nvim-tree").setup {}
     end,
+  },
+
+  {
+    "norcalli/nvim-colorizer.lua",
   }
-  
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -327,6 +331,7 @@ vim.opt.termguicolors = true
 
 -- empty setup using defaults
 require("nvim-tree").setup()
+require("colorizer").setup()
 
 
 -- [[ Highlight on yank ]]
