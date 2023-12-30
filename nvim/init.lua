@@ -341,7 +341,7 @@ vim.opt.termguicolors = true
 -- empty setup using defaults
 require("nvim-tree").setup()
 require("colorizer").setup()
-require("flutter-tools").setup()
+require("flutter-tools").setup({})
 
 
 -- [[ Highlight on yank ]]
@@ -576,22 +576,6 @@ mason_lspconfig.setup_handlers {
     }
   end
 }
-
-local lsp_config = require("lspconfig");
-
-lsp_config["dartls"].setup({
-  on_attach = on_attach,
-  settings = {
-    dart = {
-      analysisExcludedFolders = {
-        vim.fn.expand("$HOME/AppData/Local/Pub/Cache"),
-        vim.fn.expand("$HOME/.pub-cache"),
-        vim.fn.expand("opt/homebrew/"),
-        vim.fn.expand("$HOME/tools/flutter/"),
-      },
-    },
-  },
-})
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
