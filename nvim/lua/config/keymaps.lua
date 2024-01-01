@@ -31,3 +31,7 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open float
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, { desc = '[F]ormat' })
+
+-- Greatest remap sabi ni Prime
+vim.keymap.set("x", "<leader>p", '"_dp', opts)
+
