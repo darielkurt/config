@@ -1,3 +1,6 @@
+import: 
+  - ~/.config/alacritty/rose-pine-moon.yml
+
 font:
   normal:
     family: JetBrainsMono Nerd Font
