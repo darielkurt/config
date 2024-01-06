@@ -35,7 +35,7 @@ require('lazy').setup({
       'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
 
-      -- Adds LSP completion capabilities
+      -- Adds LSP completion capabilitieslza
       'hrsh7th/cmp-nvim-lsp',
 
       -- Adds a number of user-friendly snippets
@@ -186,7 +186,10 @@ require('lazy').setup({
         'stevearc/dressing.nvim', -- optional for vim.ui.select
     },
     config = true,
-}
+  },
+  {
+    'mfussenegger/nvim-dap'
+  }
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
