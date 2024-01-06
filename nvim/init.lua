@@ -12,3 +12,6 @@ require("kd.flutter-tools")
 require("nvim-tree").setup()
 require("colorizer").setup()
 require('neodev').setup()
+require('nvim-autopairs').setup({
+  disable_filetype = { "TelescopePrompt" , "vim" },
+})
