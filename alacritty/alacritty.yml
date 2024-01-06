@@ -19,3 +19,16 @@ font:
     style: Bold Italic
 
   size: 13
+
+enabled:
+  - regex: "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:|telnet:)\
+            [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+    command: xdg-open
+    command: sh -c "exec telnet $(echo -n $URL | cut -d'/' -f3 | tr ':' ' ')"         <----------------
+    post_processing: true
+    mouse:
+      enabled: true
+      mods: Control
+    binding:
+      key: U
+      mods: Control|Shift
