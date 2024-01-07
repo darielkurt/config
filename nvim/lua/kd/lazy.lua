@@ -195,7 +195,13 @@ require('lazy').setup({
     'windwp/nvim-autopairs',
     event = "InsertEnter",
     opts = {} -- this is equalent to setup({}) function
-  }
+  },
+  {
+    'RobertBrunhage/flutter-riverpod-snippets'
+  },
+  {
+    'Nash0x7E2/awesome-flutter-snippets'
+  },
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
