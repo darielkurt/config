@@ -11,7 +11,9 @@ require("kd.flutter-tools")
 -- empty setup using defaults
 require("nvim-tree").setup()
 require("colorizer").setup()
-require('neodev').setup()
+require('neodev').setup({
+  library = { plugins = { "nvim-dap-ui" }, types = true },
+})
 require('nvim-autopairs').setup({
   disable_filetype = { "TelescopePrompt" , "vim" },
 })

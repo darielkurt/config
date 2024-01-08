@@ -183,7 +183,7 @@ require('lazy').setup({
     lazy = false,
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'stevearc/dressing.nvim',   -- optional for vim.ui.select
+      'stevearc/dressing.nvim', -- optional for vim.ui.select
     },
     config = true,
   },
@@ -202,6 +202,9 @@ require('lazy').setup({
   {
     'Nash0x7E2/awesome-flutter-snippets'
   },
+  {
+    "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" },
+  }
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
