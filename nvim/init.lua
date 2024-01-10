@@ -9,6 +9,7 @@ require("kd.cmp")
 require("kd.flutter-tools")
 
 -- empty setup using defaults
+require("treesitter-context")
 require("nvim-tree").setup()
 require("colorizer").setup()
 require('neodev').setup({
