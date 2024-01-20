@@ -20,15 +20,29 @@ font:
 
   size: 13
 
-enabled:
-  - regex: "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:|telnet:)\
-            [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
-    command: xdg-open
-    command: sh -c "exec telnet $(echo -n $URL | cut -d'/' -f3 | tr ':' ' ')"         <----------------
-    post_processing: true
-    mouse:
-      enabled: true
-      mods: Control
-    binding:
-      key: U
-      mods: Control|Shift
+window:
+  # Blank space added around the window in pixels. This padding is scaled
+  # by DPI and the specified value is always added at both opposing sides.
+  padding:
+    x: 10
+    y: 10
+  # decorations: buttonless
+
+colors:
+  # Default colors
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '0x181818'
+    cursor: '0xd8d8d8'
+
+selection:
+  # This string contains all characters that are used as separators for
+  # "semantic words" in Alacritty.
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  # When set to `true`, selected text will be copied to the primary clipboard.
+  save_to_clipboard: true
+# Allow terminal applications to change Alacritty’s window title.
+window.dynamic_title: true
+cursor:
+  style: Block
+  unfocused_hollow: true
