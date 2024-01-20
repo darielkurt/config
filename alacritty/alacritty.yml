@@ -20,21 +20,6 @@ font:
 
   size: 13
 
-window:
-  # Blank space added around the window in pixels. This padding is scaled
-  # by DPI and the specified value is always added at both opposing sides.
-  padding:
-    x: 10
-    y: 10
-  # decorations: buttonless
-
-colors:
-  # Default colors
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '0x181818'
-    cursor: '0xd8d8d8'
-
 selection:
   # This string contains all characters that are used as separators for
   # "semantic words" in Alacritty.
@@ -42,7 +27,8 @@ selection:
   # When set to `true`, selected text will be copied to the primary clipboard.
   save_to_clipboard: true
 # Allow terminal applications to change Alacritty’s window title.
-window.dynamic_title: true
+  window.dynamic_title: true
+
 cursor:
   style: Block
   unfocused_hollow: true
