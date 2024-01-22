@@ -177,15 +177,49 @@ require('lazy').setup({
   {
     "norcalli/nvim-colorizer.lua",
   },
-
   {
-    'akinsho/flutter-tools.nvim',
-    lazy = false,
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'stevearc/dressing.nvim', -- optional for vim.ui.select
-    },
-    config = true,
+    "akinsho/flutter-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "stevearc/dressing.nvim" },
+    config = function()
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+      require('flutter-tools').setup {
+        debugger = {
+          enabled = true,
+          run_via_dap = true,
+          register_configurations = function(_)
+            require("dap").adapters.dart = {
+              type = "executable",
+              command = vim.fn.stdpath("data") .. "/mason/bin/dart-debug-adapter",
+              args = { "flutter" }
+            }
+
+            require("dap").configurations.dart = {
+              {
+                type = "dart",
+                request = "launch",
+                name = "Launch flutter",
+                dartSdkPath = 'home/flutter/bin/cache/dart-sdk/',
+                flutterSdkPath = "home/flutter",
+                program = "${workspaceFolder}/lib/main.dart",
+                cwd = "${workspaceFolder}",
+              }
+            }
+          end,
+        },
+        dev_log = {
+          -- toggle it when you run without DAP
+          enabled = false,
+          open_cmd = "tabedit",
+        },
+        lsp = {
+          on_attach = require("kd.on-attach"),
+          capabilities = capabilities,
+        },
+
+      }
+    end
   },
   {
     'mfussenegger/nvim-dap'
@@ -222,9 +256,9 @@ require('lazy').setup({
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
-        require("nvim-surround").setup({
-            -- Configuration here, or leave empty to use defaults
-        })
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
     end
   },
   {
@@ -237,10 +271,10 @@ require('lazy').setup({
       "TmuxNavigatePrevious",
     },
     keys = {
-      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
