@@ -96,3 +96,5 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
+-- for oil.nvim to use ""
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
