@@ -10,7 +10,6 @@ require("kd.flutter-tools")
 
 -- empty setup using defaults
 require("treesitter-context")
-require("nvim-tree").setup()
 require("colorizer").setup()
 require('neodev').setup({
   library = { plugins = { "nvim-dap-ui" }, types = true },

@@ -147,12 +147,6 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
-
-  {
-    'barrett-ruth/live-server.nvim',
-    build = 'yarn global add live-server',
-    config = true
-  },
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -162,18 +156,6 @@ require('lazy').setup({
       -- refer to the configuration section below
     },
   },
-  {
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
-    lazy = false,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("nvim-tree").setup {}
-    end,
-  },
-
   {
     "norcalli/nvim-colorizer.lua",
   },
@@ -190,11 +172,15 @@ require('lazy').setup({
           run_via_dap = true,
           register_configurations = function(_)
             require("dap").adapters.dart = {
-              type = "executable",
-              command = vim.fn.stdpath("data") .. "/mason/bin/dart-debug-adapter",
-              args = { "flutter" }
+              type = 'executable',
+              command = 'dart',
+              args = { 'debug_adapter' }
             }
-
+            require("dap").adapters.flutter = {
+              type = 'executable',
+              command = 'flutter',
+              args = { 'debug_adapter' }
+            }
             require("dap").configurations.dart = {
               {
                 type = "dart",
