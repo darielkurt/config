@@ -208,9 +208,33 @@ require('lazy').setup({
     end
   },
   {
-    'mfussenegger/nvim-dap'
-  },
+    'mfussenegger/nvim-dap',
+    dependencies = {
+      'mfussenegger/nvim-dap',
 
+    },
+    config = function()
+      local dap, dapui = require("dap"), require("dapui")
+
+      require("dapui").setup()
+
+      dap.listeners.before.attach.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.launch.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated.dapui_config = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited.dapui_config = function()
+        dapui.close()
+      end
+
+      vim.keymap.set("n", "<Leader>dt", dap.toggle_breakpoint, {})
+      vim.keymap.set("n", "<Leader>dc", dap.continue, {})
+    end
+  },
   {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
@@ -268,8 +292,8 @@ require('lazy').setup({
     'tzachar/highlight-undo.nvim'
   },
   {
-  'stevearc/oil.nvim',
-  opts = {},
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+    'stevearc/oil.nvim',
+    opts = {},
+    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
 }, {})
