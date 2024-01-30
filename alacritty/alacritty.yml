@@ -5,20 +5,16 @@ font:
   normal:
     family: JetBrainsMono Nerd Font
     style: Regular
-
   bold:
     family: JetBrainsMono Nerd Font
     style: Bold
-
   italic:
     family: JetBrainsMono Nerd Font
     style: Italic
-
   bold_italic:
     family: JetBrainsMono Nerd Font
     style: Bold Italic
-
-  size: 13
+  size: 14.5
 
 draw_bold_text_with_bright_colors: true
 
@@ -28,8 +24,6 @@ selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
   # When set to `true`, selected text will be copied to the primary clipboard.
   save_to_clipboard: true
-# Allow terminal applications to change Alacritty’s window title.
-  window.dynamic_title: true
 
 cursor:
   style: Block
@@ -38,4 +32,9 @@ cursor:
 scrolling:
   history: 10000
   multiplier: 3
+
+window:
+  decorations: none
+  padding:
+    y: 10
 
