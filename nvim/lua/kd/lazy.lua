@@ -75,7 +75,6 @@ require('lazy').setup({
       end,
     },
   },
-
   {
     -- Theme inspired by Atom
     'rose-pine/neovim',
@@ -86,7 +85,6 @@ require('lazy').setup({
       vim.cmd.colorscheme 'rose-pine'
     end,
   },
-
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -248,9 +246,6 @@ require('lazy').setup({
   },
   {
     "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" },
-  },
-  {
-    'nvim-treesitter/nvim-treesitter-context'
   },
   {
     'tpope/vim-fugitive'
