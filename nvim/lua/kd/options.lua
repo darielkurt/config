@@ -33,7 +33,7 @@ vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSig
 vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
@@ -71,9 +71,6 @@ vim.o.termguicolors = true
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 0
 vim.g.loaded_netrwPlugin = 0
-
--- set termguicolors to enable highlight groups
-vim.opt.termguicolors = true
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
