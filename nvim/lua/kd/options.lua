@@ -33,7 +33,7 @@ vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSig
 vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
 -- Set highlight on search
-vim.o.hlsearch = true
+vim.o.hlsearch = false
 
 -- Make line numbers default
 vim.wo.number = true
@@ -83,15 +83,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "*", "*zz")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
-
--- next greatest remap ever : asbjornHaland
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
-
--- for oil.nvim to use ""
-vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })

@@ -43,13 +43,9 @@ require('rose-pine').setup({
 		ColorColumn = { bg = 'rose' },
 
 		-- Blend colours against the "base" background
-		CursorLine = { bg = 'foam', blend = 10 },
+		CursorLine = { bg = 'pine', blend = 30 },
+		CursorLineNr = { bg = 'pine', blend = 30 },
 		StatusLine = { fg = 'love', bg = 'love', blend = 10 },
-
-		-- By default each group adds to the existing config.
-		-- If you only want to set what is written in this config exactly,
-		-- you can set the inherit option:
-		Search = { bg = 'gold', inherit = false },
 	}
 })
 
