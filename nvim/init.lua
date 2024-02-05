@@ -11,7 +11,6 @@ require("kd.nvim-autopairs")
 require("kd.highlight-undo")
 
 -- empty setup using defaults
-require("colorizer").setup()
 require('neodev').setup({
   library = { plugins = { "nvim-dap-ui" }, types = true },
 })

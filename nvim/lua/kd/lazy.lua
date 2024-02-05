@@ -58,7 +58,8 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
       on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>gp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[G]it [P]review Hunk' })
+        vim.keymap.set('n', '<leader>gp', require('gitsigns').preview_hunk,
+          { buffer = bufnr, desc = '[G]it [P]review Hunk' })
         vim.keymap.set('n', '<leader>gb', require('gitsigns').toggle_current_line_blame, { desc = '[G]it [B]lame' })
 
         -- don't override the built-in and fugitive keymaps
@@ -157,6 +158,9 @@ require('lazy').setup({
   },
   {
     "norcalli/nvim-colorizer.lua",
+    config = function()
+      require('colorizer').setup()
+    end
   },
   {
     "akinsho/flutter-tools.nvim",
