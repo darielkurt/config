@@ -23,9 +23,15 @@ selection:
   # When set to `true`, selected text will be copied to the primary clipboard.
   save_to_clipboard: true
 
+# Live config reload (changes require restart)
+live_config_reload: true
+
 cursor:
-  style: Block
   unfocused_hollow: true
+  style: 
+    shape: Block
+    blinking: Always
+  blink_interval: 500
 
 scrolling:
   history: 10000
