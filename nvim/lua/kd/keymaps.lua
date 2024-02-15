@@ -33,11 +33,13 @@ vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, { desc = '[F]ormat' })
 -- Greatest remap sabi ni Prime
 vim.keymap.set("x", "<leader>p", '"_dp', { noremap = true, silent = false })
 
+-- Horizontally center every press of these keys
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "*", "*zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("n", "<cr>", "<down>zz")
 
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
@@ -59,3 +61,4 @@ vim.keymap.set("n", "<leader>1", function() ui.nav_file(1) end, { desc = 'Harpoo
 vim.keymap.set("n", "<leader>2", function() ui.nav_file(2) end, { desc = 'Harpoon Tab 2' })
 vim.keymap.set("n", "<leader>3", function() ui.nav_file(3) end, { desc = 'Harpoon Tab 3' })
 vim.keymap.set("n", "<leader>4", function() ui.nav_file(4) end, { desc = 'Harpoon Tab 4' })
+
