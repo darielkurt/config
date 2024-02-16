@@ -39,7 +39,11 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "*", "*zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
-vim.keymap.set("n", "<cr>", "<down>zz")
+
+-- Get the default mapping of <CR> in normal mode
+local default_mapping = vim.api.nvim_replace_termcodes('<CR>', true, true, true)
+-- Create a new mapping that combines the default action and the additional action
+vim.api.nvim_set_keymap('n', '<CR>', default_mapping.."zz", {noremap = true, silent = true})
 
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
