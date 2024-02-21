@@ -353,4 +353,7 @@ require('lazy').setup({
     opts = {},
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
+  {
+    'prettier/vim-prettier'
+  },
 }, {})
