@@ -66,3 +66,5 @@ vim.keymap.set("n", "<leader>2", function() ui.nav_file(2) end, { desc = 'Harpoo
 vim.keymap.set("n", "<leader>3", function() ui.nav_file(3) end, { desc = 'Harpoon Tab 3' })
 vim.keymap.set("n", "<leader>4", function() ui.nav_file(4) end, { desc = 'Harpoon Tab 4' })
 
+-- Copy all lines to clipboard
+vim.keymap.set("n", "<leader>cc", ":%y+<CR>", { desc = '[C]opy to [C]lipboard'})
