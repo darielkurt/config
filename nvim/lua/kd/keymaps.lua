@@ -68,3 +68,5 @@ vim.keymap.set("n", "<leader>4", function() ui.nav_file(4) end, { desc = 'Harpoo
 
 -- Copy all lines to clipboard
 vim.keymap.set("n", "<leader>cc", ":%y+<CR>", { desc = '[C]opy to [C]lipboard'})
+-- Select all then paste
+vim.keymap.set("n", "<leader>cp", "gg0vG$p", { desc = 'Select All and [P]aste'})
