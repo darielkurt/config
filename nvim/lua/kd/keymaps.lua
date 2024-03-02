@@ -43,7 +43,7 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- Get the default mapping of <CR> in normal mode
 local default_mapping = vim.api.nvim_replace_termcodes('<CR>', true, true, true)
 -- Create a new mapping that combines the default action and the additional action
-vim.api.nvim_set_keymap('n', '<CR>', default_mapping.."zz", {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<CR>', default_mapping .. "zz", { noremap = true, silent = true })
 
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
@@ -67,6 +67,11 @@ vim.keymap.set("n", "<leader>3", function() ui.nav_file(3) end, { desc = 'Harpoo
 vim.keymap.set("n", "<leader>4", function() ui.nav_file(4) end, { desc = 'Harpoon Tab 4' })
 
 -- Copy all lines to clipboard
-vim.keymap.set("n", "<leader>cc", ":%y+<CR>", { desc = '[C]opy to [C]lipboard'})
+vim.keymap.set("n", "<leader>cc", ":%y+<CR>", { desc = '[C]opy to [C]lipboard' })
 -- Select all then paste
-vim.keymap.set("n", "<leader>cp", "gg0vG$p", { desc = 'Select All and [P]aste'})
+vim.keymap.set("n", "<leader>cp", "gg0vG$p", { desc = 'Select All and [P]aste' })
+
+-- Show all diagnostics on current line in floating window
+vim.keymap.set('n', '<leader>ss', ':lua vim.diagnostic.open_float()<CR>',
+  { desc = '[S]how Floating Diagnostic', noremap = true, silent = true }
+)
