@@ -16,8 +16,8 @@ if not vim.loop.fs_stat(lazypath) then
   }
 end
 vim.opt.rtp:prepend(lazypath)
-vim.opt.cursorline = true;
-vim.wo.relativenumber = true
+vim.opt.cursorline = true
+vim.wo.relativenumber = false
 
 -- Define LSP signs
 vim.fn.sign_define("LspDiagnosticsSignError", { text = "", texthl = "LspDiagnosticsSignError" })
