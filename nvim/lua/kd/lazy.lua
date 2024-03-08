@@ -358,5 +358,9 @@ require('lazy').setup({
   },
   {
     'petertriho/nvim-scrollbar'
-  }
+  },
+  {
+    'echasnovski/mini.nvim',
+    version = '*'
+  },
 }, {})
