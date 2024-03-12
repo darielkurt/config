@@ -75,3 +75,17 @@ vim.keymap.set("n", "<leader>cp", "gg0vG$p", { desc = 'Select All and [P]aste' }
 vim.keymap.set('n', '<leader>ss', ':lua vim.diagnostic.open_float()<CR>',
   { desc = '[S]how Floating Diagnostic', noremap = true, silent = true }
 )
+
+-- set H and L to reach start of line or end of line
+vim.keymap.set({'n', 'x', 'o'}, 'H', '^')
+vim.keymap.set({'n', 'x', 'o'}, 'L', '$')
+
+-- Don't leave visual mode when changing indent
+vim.api.nvim_set_keymap('x', '>', '>gv', { noremap = true })
+vim.api.nvim_set_keymap('x', '<', '<gv', { noremap = true })
+
+-- Don't yank on put
+vim.api.api('x', 'p', 'p<cmd>let @+=@0<CR><cmd>let @"=@0<CR>', { noremap = true, silent = true })
+
+
+
