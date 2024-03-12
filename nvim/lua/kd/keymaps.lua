@@ -81,11 +81,9 @@ vim.keymap.set({'n', 'x', 'o'}, 'H', '^')
 vim.keymap.set({'n', 'x', 'o'}, 'L', '$')
 
 -- Don't leave visual mode when changing indent
-vim.api.nvim_set_keymap('x', '>', '>gv', { noremap = true })
-vim.api.nvim_set_keymap('x', '<', '<gv', { noremap = true })
+vim.keymap.set('x', '>', '>gv', { noremap = true })
+vim.keymap.set('x', '<', '<gv', { noremap = true })
 
 -- Don't yank on put
-vim.api.api('x', 'p', 'p<cmd>let @+=@0<CR><cmd>let @"=@0<CR>', { noremap = true, silent = true })
-
-
+vim.keymap.set('x', 'p', 'p<cmd>let @+=@0<CR><cmd>let @"=@0<CR>', { noremap = true, silent = true })
 
