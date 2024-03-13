@@ -42,8 +42,7 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 -- Get the default mapping of <CR> in normal mode
 local default_mapping = vim.api.nvim_replace_termcodes('<CR>', true, true, true)
--- Create a new mapping that combines the default action and the additional action
-vim.api.nvim_set_keymap('n', '<CR>', default_mapping .. "zz", { noremap = true, silent = true })
+vim.keymap.set('n', '<CR>', default_mapping .. "zz", { noremap = true, silent = true })
 
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
@@ -87,3 +86,6 @@ vim.keymap.set('x', '<', '<gv', { noremap = true })
 -- Don't yank on put
 vim.keymap.set('x', 'p', 'p<cmd>let @+=@0<CR><cmd>let @"=@0<CR>', { noremap = true, silent = true })
 
+-- C-o and C-i to center horizontally
+vim.keymap.set('n', '<C-o>', '<C-o>:normal! zz<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-i>', '<C-i>:normal! zz<CR>', { noremap = true, silent = true })
