@@ -180,9 +180,7 @@ require('lazy').setup({
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
+      mode = "document_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
     },
   },
   {
@@ -363,4 +361,16 @@ require('lazy').setup({
     'echasnovski/mini.nvim',
     version = '*'
   },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      keywords = {
+        TODO = { alt = { "TODO " } },
+      },
+      highlight = {
+        pattern = [[.*<(KEYWORDS)\s*(:)? ]], -- pattern or table of patterns, used for highlighting (vim regex)
+      },
+    }
+  }
 }, {})
