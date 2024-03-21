@@ -372,5 +372,13 @@ require('lazy').setup({
         pattern = [[.*<(KEYWORDS)\s*(:)? ]], -- pattern or table of patterns, used for highlighting (vim regex)
       },
     }
+  },
+  {
+    "max397574/better-escape.nvim",
+    config = function()
+      require("better_escape").setup({
+        mapping = { "jk", "jj", "kk", "kj"},
+      })
+    end,
   }
 }, {})
