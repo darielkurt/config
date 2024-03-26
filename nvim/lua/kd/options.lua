@@ -84,3 +84,15 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 vim.opt.scrolloff = 8
+
+-- indent
+vim.o.tabstop = 2
+vim.bo.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.shiftwidth = 2
+vim.bo.shiftwidth = 2
+vim.o.autoindent = true
+vim.o.autoread = true
+vim.bo.autoindent = true
+vim.o.expandtab = true
+vim.bo.expandtab = true
