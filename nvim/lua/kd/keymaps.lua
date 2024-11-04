@@ -91,3 +91,4 @@ vim.keymap.set('n', '<C-o>', '<C-o>:normal! zz<CR>', { noremap = true, silent = 
 vim.keymap.set('n', '<C-i>', '<C-i>:normal! zz<CR>', { noremap = true, silent = true })
 
 vim.keymap.set('n', '<leader>gB', ':Git blame<CR>', { desc = '[G]it [B]lame All'})
+
