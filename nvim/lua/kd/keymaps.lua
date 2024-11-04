@@ -58,7 +58,7 @@ local ui = require("harpoon.ui")
 vim.keymap.set("n", "<leader>a", mark.add_file, { desc = 'Harpoon Mark' })
 vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
 vim.keymap.set("n", "<C-n>", ui.nav_next)
-vim.keymap.set("n", "<C-p>", ui.nav_prev)
+vim.keymap.set("n", "<C-b>", ui.nav_prev)
 
 vim.keymap.set("n", "<leader>1", function() ui.nav_file(1) end, { desc = 'Harpoon Tab 1' })
 vim.keymap.set("n", "<leader>2", function() ui.nav_file(2) end, { desc = 'Harpoon Tab 2' })
@@ -69,11 +69,6 @@ vim.keymap.set("n", "<leader>4", function() ui.nav_file(4) end, { desc = 'Harpoo
 vim.keymap.set("n", "<leader>cc", ":%y+<CR>", { desc = '[C]opy to [C]lipboard' })
 -- Select all then paste
 vim.keymap.set("n", "<leader>cp", "gg0vG$pkdd", { desc = 'Select All and [P]aste' })
-
--- Show all diagnostics on current line in floating window
-vim.keymap.set('n', '<leader>ss', ':lua vim.diagnostic.open_float()<CR>',
-  { desc = '[S]how Floating Diagnostic', noremap = true, silent = true }
-)
 
 -- set H and L to reach start of line or end of line
 vim.keymap.set({'n', 'x', 'o'}, 'H', '^')
