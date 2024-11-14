@@ -197,72 +197,17 @@ require('lazy').setup({
       capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
       require('flutter-tools').setup {
-        debugger = {
-          enabled = true,
-          run_via_dap = true,
-          register_configurations = function(_)
-            require("dap").adapters.dart = {
-              type = 'executable',
-              command = 'dart',
-              args = { 'debug_adapter' }
-            }
-            require("dap").adapters.flutter = {
-              type = 'executable',
-              command = 'flutter',
-              args = { 'debug_adapter' }
-            }
-            require("dap").configurations.dart = {
-              {
-                type = "dart",
-                request = "launch",
-                name = "Launch flutter",
-                dartSdkPath = 'home/flutter/bin/cache/dart-sdk/',
-                flutterSdkPath = "home/flutter",
-                program = "${workspaceFolder}/lib/main.dart",
-                cwd = "${workspaceFolder}",
-              }
-            }
-          end,
-        },
         dev_log = {
-          -- toggle it when you run without DAP
           enabled = false,
           open_cmd = "tabedit",
         },
         lsp = {
           on_attach = require("kd.on-attach"),
           capabilities = capabilities,
+          autostart = true,
         },
 
       }
-    end
-  },
-  {
-    'mfussenegger/nvim-dap',
-    dependencies = {
-      'mfussenegger/nvim-dap',
-
-    },
-    config = function()
-      local dap, dapui = require("dap"), require("dapui")
-
-      require("dapui").setup()
-
-      dap.listeners.before.attach.dapui_config = function()
-        dapui.open()
-      end
-      dap.listeners.before.launch.dapui_config = function()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated.dapui_config = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited.dapui_config = function()
-        dapui.close()
-      end
-
-      vim.keymap.set("n", "<Leader>dt", dap.toggle_breakpoint, { desc = '[D]ebugger [T]oggle' })
-      vim.keymap.set("n", "<Leader>dc", dap.continue, { desc = '[D]ebugger [C]ontinue' })
     end
   },
   {
@@ -277,9 +222,6 @@ require('lazy').setup({
     'Nash0x7E2/awesome-flutter-snippets'
   },
   {
-    "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" },
-  },
-  {
     'tpope/vim-fugitive'
   },
   {
@@ -287,6 +229,7 @@ require('lazy').setup({
   },
   {
     'ThePrimeagen/harpoon',
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require('harpoon').setup({
         global_settings = {
@@ -373,12 +316,11 @@ require('lazy').setup({
       },
     }
   },
-  {
-    "max397574/better-escape.nvim",
-    config = function()
-      require("better_escape").setup({
-        mapping = { "jk", "jj", "kk", "kj" },
-      })
-    end,
-  },
+  -- {
+  --   dir = "/Users/kurtdariel/Documents/Projects/flutter-closer",
+  --   name = "flutter-closer",
+  --   config = function()
+  --     -- require("flutter-closer").setup_autocmd()
+  --   end,
+  -- },
 }, {})
