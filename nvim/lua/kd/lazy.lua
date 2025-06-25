@@ -348,7 +348,13 @@ require('lazy').setup({
   },
   {
     'stevearc/oil.nvim',
-    opts = {},
+    opts = {
+      confirm_keys = {
+        yes = '<Enter>',
+        no = '<Esc>',
+      },
+      skip_confirm_for_simple_edits = false,
+    },
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
   {
@@ -376,9 +382,7 @@ require('lazy').setup({
   {
     "max397574/better-escape.nvim",
     config = function()
-      require("better_escape").setup({
-        mapping = { "jk", "jj", "kk", "kj" },
-      })
+      require("better_escape").setup()
     end,
   },
 }, {})
