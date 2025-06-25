@@ -71,8 +71,8 @@ vim.keymap.set("n", "<leader>cc", ":%y+<CR>", { desc = '[C]opy to [C]lipboard' }
 vim.keymap.set("n", "<leader>cp", "gg0vG$pkdd", { desc = 'Select All and [P]aste' })
 
 -- set H and L to reach start of line or end of line
-vim.keymap.set({'n', 'x', 'o'}, 'H', '^')
-vim.keymap.set({'n', 'x', 'o'}, 'L', '$')
+vim.keymap.set({ 'n', 'x', 'o' }, 'H', '^')
+vim.keymap.set({ 'n', 'x', 'o' }, 'L', '$')
 
 -- Don't leave visual mode when changing indent
 vim.keymap.set('x', '>', '>gv', { noremap = true })
@@ -85,5 +85,15 @@ vim.keymap.set('x', 'p', 'p<cmd>let @+=@0<CR><cmd>let @"=@0<CR>', { noremap = tr
 vim.keymap.set('n', '<C-o>', '<C-o>:normal! zz<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-i>', '<C-i>:normal! zz<CR>', { noremap = true, silent = true })
 
-vim.keymap.set('n', '<leader>gB', ':Git blame<CR>', { desc = '[G]it [B]lame All'})
+vim.keymap.set('n', '<leader>gB', ':Git blame<CR>', { desc = '[G]it [B]lame All' })
+
+-- Copy the current directory to the system clipboard
+vim.api.nvim_create_user_command('CopyDir', function(args)
+    local dir_path = vim.fn.expand('%:h:p')
+    vim.fn.setreg('+', dir_path)
+    print("Directory path copied: " .. dir_path)
+end, {})
+
+-- Map <Leader>cd to execute the command
+vim.keymap.set('n', '<Leader>cd', ':CopyDir<CR>', { noremap = true, silent = true })
 

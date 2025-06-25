@@ -291,7 +291,13 @@ require('lazy').setup({
   },
   {
     'stevearc/oil.nvim',
-    opts = {},
+    opts = {
+      confirm_keys = {
+        yes = '<Enter>',
+        no = '<Esc>',
+      },
+      skip_confirm_for_simple_edits = false,
+    },
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
   {
@@ -316,11 +322,10 @@ require('lazy').setup({
       },
     }
   },
-  -- {
-  --   dir = "/Users/kurtdariel/Documents/Projects/flutter-closer",
-  --   name = "flutter-closer",
-  --   config = function()
-  --     -- require("flutter-closer").setup_autocmd()
-  --   end,
-  -- },
+  {
+    "max397574/better-escape.nvim",
+    config = function()
+      require("better_escape").setup()
+    end,
+  },
 }, {})
