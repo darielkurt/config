@@ -192,6 +192,7 @@ require('lazy').setup({
   {
     "akinsho/flutter-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "stevearc/dressing.nvim" },
+    ft = "dart",
     config = function()
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
@@ -205,6 +206,12 @@ require('lazy').setup({
           on_attach = require("kd.on-attach"),
           capabilities = capabilities,
           autostart = true,
+          settings = {
+            analysisExcludedFolders = {
+              vim.fn.expand("$HOME/.pub-cache"),
+              vim.fn.expand("$HOME/.asdf"),
+            },
+          },
         },
 
       }
@@ -292,12 +299,18 @@ require('lazy').setup({
   {
     'stevearc/oil.nvim',
     opts = {
-      confirm_keys = {
-        yes = '<Enter>',
-        no = '<Esc>',
-      },
-      skip_confirm_for_simple_edits = false,
+      skip_confirm_for_simple_edits = true,
     },
+    config = function(_, opts)
+      require("oil").setup(opts)
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "oil_preview",
+        callback = function(args)
+          vim.keymap.set("n", "a", "y", { buffer = args.buf, remap = true, nowait = true })
+          vim.keymap.set("n", "<CR>", "y", { buffer = args.buf, remap = true, nowait = true })
+        end,
+      })
+    end,
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
   {
@@ -327,5 +340,9 @@ require('lazy').setup({
     config = function()
       require("better_escape").setup()
     end,
+  },
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = false,
   },
 }, {})
