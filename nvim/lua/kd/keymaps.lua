@@ -89,11 +89,24 @@ vim.keymap.set('n', '<leader>gB', ':Git blame<CR>', { desc = '[G]it [B]lame All'
 
 -- Copy the current directory to the system clipboard
 vim.api.nvim_create_user_command('CopyDir', function(args)
-    local dir_path = vim.fn.expand('%:h:p')
-    vim.fn.setreg('+', dir_path)
-    print("Directory path copied: " .. dir_path)
+  local dir_path = vim.fn.expand('%:h:p')
+  vim.fn.setreg('+', dir_path)
+  print("Directory path copied: " .. dir_path)
 end, {})
 
 -- Map <Leader>cd to execute the command
 vim.keymap.set('n', '<Leader>cd', ':CopyDir<CR>', { noremap = true, silent = true })
 
+-- Repurpose s for quick surround mappings (s is redundant with cl)
+vim.keymap.set("n", "s", "<Nop>")
+vim.keymap.set("n", "sp", "ysiw)", { remap = true, desc = "Surround word with ()" })
+vim.keymap.set("n", "sb", "ysiw]", { remap = true, desc = "Surround word with []" })
+vim.keymap.set("n", "sc", "ysiw}", { remap = true, desc = "Surround word with {}" })
+vim.keymap.set("n", "s(", "ysiw)", { remap = true, desc = "Surround word with ()" })
+vim.keymap.set("n", "s)", "ysiw)", { remap = true, desc = "Surround word with ()" })
+vim.keymap.set("n", "s[", "ysiw]", { remap = true, desc = "Surround word with []" })
+vim.keymap.set("n", "s]", "ysiw]", { remap = true, desc = "Surround word with []" })
+vim.keymap.set("n", "s{", "ysiw}", { remap = true, desc = "Surround word with {}" })
+vim.keymap.set("n", "s}", "ysiw}", { remap = true, desc = "Surround word with {}" })
+vim.keymap.set("n", "s<", "ysiw>", { remap = true, desc = "Surround word with <>" })
+vim.keymap.set("n", "s>", "ysiw>", { remap = true, desc = "Surround word with <>" })
